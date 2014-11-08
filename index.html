@@ -9,7 +9,6 @@
 
 		<script type="text/javascript" src="Myo.js"></script>
 		<script src='myo.experimental.js'></script>
-		<script src='http://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js'></script>
 	</head>
 
 	<body>
@@ -18,33 +17,63 @@
 			<li id="varX"></li>
 			<li id="varY"></li>
 			<li id="varZ"></li>
+			<li id="varW"></li>
+			<li></li>
 			<li id="pitch"></li>
 			<li id="yaw"></li>
 			<li></li>
 			<li id="roll2"></li>
 			<li id="pitch2"></li>
 			<li id="yaw2"></li>
+			<li></li>
+			<li id="init_P"></li>
+			<li id="init_Y"></li>
+			<li></li>
+			<li id="diff_P"></li>
+			<li id="diff_Y"></li>
+			<li id="pose"></li>
 		</ul>
 	</body>
 
 	<script>
-		var myMyo = Myo.create();
-		myMyo.on('fingers_spread', function(edge){
-    	if(!edge) return;
-    	alert('Hello Myo!');
-    	myMyo.vibrate();
-		});
 
+		var init_pitch;
+		var init_yaw;
+		document.getElementById("init_P").innerHTML = "init pitch: " + init_pitch;
+		document.getElementById("init_Y").innerHTML = "init yaw: " + init_yaw;
+
+		var myMyo = Myo.create();
+	/**	myMyo.on('fist', function(edge){
+    	if(!edge) return;
+    	alert('Initialising!');
+    	myMyo.vibrate();
+    	//var init_pitch = 
+    	//var init_yaw = 
+		});**/
+		
+		//myMyo.zeroOrientation();
 		myMyo.on('orientation', function(data){
+
 			document.getElementById("varX").innerHTML = "val x: " + data.x;
 			document.getElementById("varY").innerHTML = "val y: " + data.y;
 			document.getElementById("varZ").innerHTML = "val z: " + data.z;
+			document.getElementById("varW").innerHTML = "val w: " + data.w;
 
 
 			var pitch = Math.asin(2.0 * (data.w * data.y - data.z * data.x))*100;
 			var yaw = Math.atan2(2.0 * (data.w * data.z + data.x * data.y),
                        1.0 - 2.0 * (data.y * data.y + data.z * data.z))*100;
 
+			myMyo.on('fist', function(edge){
+				if(!edge) return;
+				alert('Initialising2');
+				//myMyo.vibrate();
+				init_pitch = pitch*100;
+				init_yaw = yaw*100;
+				document.getElementById("init_P").innerHTML = "init pitch: " + init_pitch;
+				document.getElementById("init_Y").innerHTML = "init yaw: " + init_yaw;
+				return;
+			})
 
 			document.getElementById("pitch").innerHTML = "pitch: " + pitch;
 			document.getElementById("yaw").innerHTML = "yaw: " + yaw;
@@ -65,6 +94,18 @@
       document.getElementById("roll2").innerHTML = "roll: " + roll_w;
       document.getElementById("pitch2").innerHTML = "pitch: " + pitch_w;
 			document.getElementById("yaw2").innerHTML = "yaw: " + yaw_w;
+
+			document.getElementById("diff_Y").innerHTML = "diff in yaw: " + (init_yaw - yaw*100);
+			if(init_yaw-yaw*100 < -100){
+				console.log("hug");
+				document.getElementById('pose').innerHTML = "hug";
+			}
+
+			document.getElementById("diff_P").innerHTML = "diff in pitch: " + (Math.abs(init_pitch) - Math.abs(pitch*100));
+			if((init_yaw-yaw*100 < -20) && (Math.abs(init_pitch)-Math.abs(pitch*100)) <-20){
+				console.log("hug + rub");
+				document.getElementById('pose').innerHTML = "hug + rub";
+			}
 		});
 
 	</script>

@@ -5,3 +5,7 @@ yaw = know where arm is on body
 pitch = used for rubbing back
 
 Edison Name + Password = myo_edison
+
+yaw difference > 100 == hug; >150 == tight hug
+pitch difference -> negative to positive, range < +-100
+

@@ -1,5 +1,14 @@
 (function(){
 
+	var Socket;
+	if(typeof window === 'undefined'){
+		Socket = require('ws');
+	}else {
+		if (!("WebSocket" in window)){
+			console.error('Myo.js : Sockets not supported :(');
+		}
+		Socket = WebSocket;
+	}
 	/**
 	 * Utils
 	 */
@@ -34,6 +43,8 @@
 			myo.trigger('bluetooth_strength', data.rssi);
 		},
 		'orientation' : function(myo, data){
+			myo._lastQuant = data.orientation;
+			//console.log(data.orientation, myo.orientationOffset);
 			var imu_data = {
 				orientation : {
 					x : data.orientation.x - myo.orientationOffset.x,
@@ -114,9 +125,13 @@
 	};
 	var off = function(events, name){
 		events = events.reduce(function(result, event){
-			if(event.name !== name && event.id !== id) result.push(event);
+			if(event.name == name || event.id == name) {
+				return result;
+			}
+			result.push(event);
 			return result;
 		}, []);
+		return events;
 	};
 
 
@@ -139,6 +154,9 @@
 		},
 		on : function(eventName, fn){
 			return on(this.events, eventName, fn)
+		},
+		off : function(eventName){
+			this.events = off(this.events, eventName);
 		},
 
 		timer : function(status, timeout, fn){
@@ -168,7 +186,7 @@
 			return this;
 		},
 		zeroOrientation : function(){
-			this.orientationOffset = this.lastIMU.orientation;
+			this.orientationOffset = this._lastQuant;
 			this.trigger('zero_orientation');
 			return this;
 		},
@@ -194,8 +212,8 @@
 
 	Myo = {
 		options : {
-			api_version           : 1,
-			socket_url            : "ws://127.0.0.1:10138/myo/"
+			api_version : 1,
+			socket_url  : "ws://127.0.0.1:10138/myo/"
 		},
 		events : [],
 		myos : [],
@@ -231,11 +249,8 @@
 			return on(Myo.events, eventName, fn)
 		},
 		start : function(){
-			if (!("WebSocket" in window)){
-				console.error('Myo.js : Sockets not supported :(');
-			}
 			if(!Myo.socket){
-				Myo.socket = new WebSocket(Myo.options.socket_url + Myo.options.api_version);
+				Myo.socket = new Socket(Myo.options.socket_url + Myo.options.api_version);
 			}
 			Myo.socket.onmessage = handleMessage;
 		}
@@ -243,8 +258,5 @@
 	};
 
 	Myo.start();
+	if(typeof module !== 'undefined') module.exports = Myo;
 })();
-
-
-
-
