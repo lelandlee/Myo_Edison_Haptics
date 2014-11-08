@@ -95,16 +95,35 @@
       document.getElementById("pitch2").innerHTML = "pitch: " + pitch_w;
 			document.getElementById("yaw2").innerHTML = "yaw: " + yaw_w;
 
-			document.getElementById("diff_Y").innerHTML = "diff in yaw: " + (init_yaw - yaw*100);
-			if(init_yaw-yaw*100 < -100){
+			var yawDiff = function(){
+				return init_yaw - yaw*100;
+			}
+			var pitchDiff = function(){
+				return (Math.abs(init_pitch) - Math.abs(pitch*100));
+			}
+
+
+			document.getElementById("diff_Y").innerHTML = "diff in yaw: " + yawDiff();
+			document.getElementById("diff_P").innerHTML = "diff in pitch: " + pitchDiff();
+
+			//hug determiner via delta yaw
+			if(yawDiff() < -70){
 				console.log("hug");
 				document.getElementById('pose').innerHTML = "hug";
 			}
+			if(yawDiff() < -140){
+				console.log("tight hug");
+				document.getElementById('pose').innerHTML = "tight hug";
+			}
 
-			document.getElementById("diff_P").innerHTML = "diff in pitch: " + (Math.abs(init_pitch) - Math.abs(pitch*100));
-			if((init_yaw-yaw*100 < -20) && (Math.abs(init_pitch)-Math.abs(pitch*100)) <-20){
-				console.log("hug + rub");
-				document.getElementById('pose').innerHTML = "hug + rub";
+			//hug + rub determiner via delta pitch
+			if(yawDiff() < -70 && pitchDiff() <-15){
+				console.log("hug + short stroke rub");
+				document.getElementById('pose').innerHTML = "hug + short stroke rub";
+			}
+			if(yawDiff() < -70 && pitchDiff() <-30){
+				console.log("hug + Long stroke rub");
+				document.getElementById('pose').innerHTML = "hug + Long stroke rub";
 			}
 		});
 
