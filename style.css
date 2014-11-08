@@ -1,0 +1,32 @@
+body {
+	background-color: #FFE3D9
+}
+
+.header {
+	text-align: center;
+	border: 10px solid #DDBCB0;
+	background-color: #B0DDD4;
+}
+
+.header h1{
+	color: #FFDB9A;/*black looks good too*/
+	font-size: 180px;
+	font-family: 'Dancing Script', cursive;
+	font-weight: 600;
+	border: 10px dashed #DDBCB0;
+}
+
+.header h2{
+	color: #8E2C48;
+	height: 50px;
+	font-family: 'Times New Roman';
+}
+
+.data {
+	list-style-type: none;
+}
+
+.result li{
+	list-style-type: none;
+	font-size: 40px;
+}

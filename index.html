@@ -7,32 +7,47 @@
 
 		<title>yourMood</title>
 
+		<!-- css -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css">
+		<link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+
+		<!-- Javascript -->
 		<script type="text/javascript" src="Myo.js"></script>
 		<script src='myo.experimental.js'></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
-		<h1>Myo Test</h1>
-		<ul class="data">
+		<div class="header">
+			<h1 class="col-md-12">Always There</h1>
+			<h2 class="col-md-12">~ You are Never Alone</h2>
+		</div>
+		<ul class="data col-sm-6">
 			<li id="varX"></li>
 			<li id="varY"></li>
 			<li id="varZ"></li>
 			<li id="varW"></li>
-			<li></li>
+
 			<li id="pitch"></li>
 			<li id="yaw"></li>
-			<li></li>
+
 			<li id="roll2"></li>
 			<li id="pitch2"></li>
 			<li id="yaw2"></li>
-			<li></li>
+
 			<li id="init_P"></li>
 			<li id="init_Y"></li>
-			<li></li>
+
 			<li id="diff_P"></li>
 			<li id="diff_Y"></li>
+		</ul>
+		<ul class="result col-sm-6">
+			<li>Your Action:</li>
 			<li id="pose"></li>
 		</ul>
+
 	</body>
 
 	<script>
@@ -43,13 +58,6 @@
 		document.getElementById("init_Y").innerHTML = "init yaw: " + init_yaw;
 
 		var myMyo = Myo.create();
-	/**	myMyo.on('fist', function(edge){
-    	if(!edge) return;
-    	alert('Initialising!');
-    	myMyo.vibrate();
-    	//var init_pitch = 
-    	//var init_yaw = 
-		});**/
 		
 		//myMyo.zeroOrientation();
 		myMyo.on('orientation', function(data){
@@ -124,6 +132,10 @@
 			if(yawDiff() < -70 && pitchDiff() <-30){
 				console.log("hug + Long stroke rub");
 				document.getElementById('pose').innerHTML = "hug + Long stroke rub";
+			}
+
+			if(yawDiff() > 0 && pitchDiff() > 0){
+				document.getElementById('pose').innerHTML = "";
 			}
 		});
 
