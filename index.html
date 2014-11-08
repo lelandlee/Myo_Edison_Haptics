@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="eng">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>yourMood</title>
+
+		<script type="text/javascript" src="Myo.js"></script>
+		<script src='myo.experimental.js'></script>
+		<script src='http://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js'></script>
+	</head>
+
+	<body>
+		<h1>Myo Test</h1>
+		<ul class="data">
+			<li id="varX"></li>
+			<li id="varY"></li>
+			<li id="varZ"></li>
+			<li id="pitch"></li>
+			<li id="yaw"></li>
+			<li></li>
+			<li id="roll2"></li>
+			<li id="pitch2"></li>
+			<li id="yaw2"></li>
+		</ul>
+	</body>
+
+	<script>
+		var myMyo = Myo.create();
+		myMyo.on('fingers_spread', function(edge){
+    	if(!edge) return;
+    	alert('Hello Myo!');
+    	myMyo.vibrate();
+		});
+
+		myMyo.on('orientation', function(data){
+			document.getElementById("varX").innerHTML = "val x: " + data.x;
+			document.getElementById("varY").innerHTML = "val y: " + data.y;
+			document.getElementById("varZ").innerHTML = "val z: " + data.z;
+
+
+			var pitch = Math.asin(2.0 * (data.w * data.y - data.z * data.x))*100;
+			var yaw = Math.atan2(2.0 * (data.w * data.z + data.x * data.y),
+                       1.0 - 2.0 * (data.y * data.y + data.z * data.z))*100;
+
+
+			document.getElementById("pitch").innerHTML = "pitch: " + pitch;
+			document.getElementById("yaw").innerHTML = "yaw: " + yaw;
+
+
+
+			var roll = Math.atan2(2.0 * (data.w * data.x + data.y * data.z),
+                           1.0 - 2.0 * (data.x * data.x + data.y * data.y));
+      var pitch = Math.asin(2.0 * (data.w * data.y - data.z * data.x));
+      var yaw = Math.atan2(2.0 * (data.w * data.z + data.x * data.y),
+                        1.0 - 2.0 * (data.y * data.y + data.z * data.z));
+      
+      // Convert the floating point angles in radians to a scale from 0 to 360.
+      var roll_w = (20*(roll + Math.PI)/(Math.PI * 2.0) * 18);
+      var pitch_w = (20*(pitch + Math.PI/2.0)/Math.PI * 18);
+      var yaw_w = (20*(yaw + Math.PI)/(Math.PI * 2.0) * 18);
+
+      document.getElementById("roll2").innerHTML = "roll: " + roll_w;
+      document.getElementById("pitch2").innerHTML = "pitch: " + pitch_w;
+			document.getElementById("yaw2").innerHTML = "yaw: " + yaw_w;
+		});
+
+	</script>
+</html>
+
+
