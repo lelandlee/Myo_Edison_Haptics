@@ -21,6 +21,9 @@ Password: Neveralone1
 
 Create connection between different clients in database, can virtually hug each other
 
+-just send person email about hug stats
+
+
 pitch prep:
 -globalizing world, people are farther appart but need to maintain relationships
 -short comings of phone + email + sms + skype -> something physical
@@ -29,5 +32,6 @@ pitch prep:
 -new level of immersion
 
 -technologies:
--Myo
+-Myo (used javascript version on GitHub)
 -Azure cloud
+-quaternion math
