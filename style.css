@@ -92,6 +92,10 @@ body{
 	text-align: center;
 }
 
+.options_list {
+	text-align: center;
+}
+
 .options_list li {
 	display: table-cell;
 	list-style-type: none;
@@ -103,10 +107,10 @@ body{
 	border-radius: 10px;
 	font-size: 24px;
 	padding: 4px 0px 4px 7px;
-	margin: 4px auto;
+	margin: 8px auto;
+	padding-left: 15px;
+	padding-right: 15px;
 	font-family: 'Roboto', sans-serif;
-	text-align: center;
-	width: 150px;
 	color: white;
 }
 
