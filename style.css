@@ -1,5 +1,6 @@
 body{
 	background-color: #FFE3D9;
+	color: black;
 }
 
 .header {
@@ -25,6 +26,81 @@ body{
 	font-family: 'Times New Roman';
 }
 
+/*break*/
+.login_page {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+
+}
+
+.login_page input, button, .greetings_page button{
+	border: 2px solid #FFC949;
+	border-radius: 10px;
+	font-size: 24px;
+	padding: 4px 0px 4px 7px;
+	margin: 4px auto;
+	background-color: #FFC949;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	color: #555;
+	width: 300px;
+}
+/* do not group these rules */
+*::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.95);
+}
+*:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.95);
+}
+*:-ms-input-placeholder { /* IE10+ */
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* add toggle for button later*/
+.login_page .login{
+	background-color: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.9);
+	color: #fff;
+	font-weight: 600;
+}
+
+.login_page .signup{
+	background-color: rgba(255, 255, 255, 0.9);
+	color: #FF9933;
+	border-color: rgba(255, 255, 255, 0.9);
+	font-weight: 600;
+}
+/*break*/
+
+.begin_row {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: #B0DDD4;
+	border: 10px solid #DDBCB0;
+}
+
+.begin_row h1{
+	color: #FFDB9A;/*black looks good too*/
+	font-size: 90px;
+	font-family: 'Dancing Script', cursive;
+	font-weight: 600;
+	border: 10px dashed #DDBCB0;
+	margin-left: 3%;
+	width: 94%;
+	margin-right: 3%;
+	text-align: center;
+}
+
+.options_list li {
+	display: table-cell;
+	list-style-type: none;
+	color: #8E2C48;
+	font-size: 30px;
+	margin: 10;
+	padding: 0;
+}
+
 .info_column {
 	height: 300px;
 	text-align: center;
@@ -41,10 +117,5 @@ body{
 .result li{
 	list-style-type: none;
 	font-size: 30px;
+	color: black;
 }
-/*
-.myCanvas {
-	width: 400px;
-	height: 300px;
-	background-color: black;
-}*/

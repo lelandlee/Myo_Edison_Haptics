@@ -27,6 +27,30 @@
 			<h1 class="col-lg-12">Always There</h1>
 			<h2 class="col-lg-12">~ You are Never Alone</h2>
 		</div>
+
+		<div class="container login_page" id="l_page">
+			<form>
+				<input type="text" placeholder="Unique Identity" id="name"><br />
+				<input type="password" placeholder="Unique Secret" id="password"><br />
+			</form>
+			<button class="login" onclick="login()">Log In</button><br />
+			<!-- During login error, shows a message -->
+			<div id="loginErr"></div>
+			<button class="signup" onclick="signup()">Sign Up</button>
+		</div> <!-- container -->
+
+		<div class="begin_row">
+			<h1>What Would you like to do?</h1>
+			<ul class="options_list">
+				<li>Connect:</li>
+				<li><a href="#">Bill</a></li>
+				<li><a href="#">Athens</a></li>
+				<li><a href="#">Gloria</a></li>
+				<li><a href="#">Ali</a></li>
+			</ul>
+		</div>
+
+
 		<div class="info_column">
 			<ul class="data col-sm-6">
 				<li id="varX"></li>
@@ -51,6 +75,7 @@
 				<div class="output">
 					<h2>Your Action:</h2>
 					<li id="pose"></li>
+					<li id="duration"></li>
 				</div>
 				<div class="inputFromOther">
 					<h2>Response:</h2>
@@ -138,7 +163,6 @@
 				return (Math.abs(init_pitch) - Math.abs(pitch*100));
 			}
 
-
 			document.getElementById("diff_Y").innerHTML = "diff in yaw: " + yawDiff();
 			document.getElementById("diff_P").innerHTML = "diff in pitch: " + pitchDiff();
 
@@ -147,19 +171,19 @@
 				console.log("hug");
 				document.getElementById('pose').innerHTML = "hug";
 			}
-			if(yawDiff() < -140){
+			if(yawDiff() < -140 && yawDiff() > -70){
 				console.log("tight hug");
 				document.getElementById('pose').innerHTML = "tight hug";
 			}
 
-			//hug + rub determiner via delta pitch
+			//rub determiner via delta pitch
 			if(yawDiff() < -70 && pitchDiff() <-15){
-				console.log("hug + short stroke rub");
-				document.getElementById('pose').innerHTML = "hug + short stroke rub";
+				console.log("short stroke rub");
+				document.getElementById('pose').innerHTML = "short stroke rub";
 			}
 			if(yawDiff() < -70 && pitchDiff() <-30){
-				console.log("hug + Long stroke rub");
-				document.getElementById('pose').innerHTML = "hug + Long stroke rub";
+				console.log("Long stroke rub");
+				document.getElementById('pose').innerHTML = "Long stroke rub";
 			}
 
 			if(yawDiff() > 0 && pitchDiff() > 0){
