@@ -95,14 +95,27 @@ body{
 .options_list li {
 	display: table-cell;
 	list-style-type: none;
-	color: #8E2C48;
+	background-color: #8E2C48;
 	font-size: 30px;
-	margin: 10;
-	padding: 0;
+	margin: 10px;
+	padding: 10px;
+	border: 2px solid #FFC949;
+	border-radius: 10px;
+	font-size: 24px;
+	padding: 4px 0px 4px 7px;
+	margin: 4px auto;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	width: 150px;
+	color: white;
+}
+
+.options_list li a {
+	color: white;
 }
 
 .info_column {
-	height: 300px;
+	height: 350px;
 	text-align: center;
 }
 
@@ -118,4 +131,29 @@ body{
 	list-style-type: none;
 	font-size: 30px;
 	color: black;
+}
+
+.end_row {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: #B0DDD4;
+	border: 10px solid #DDBCB0;
+}
+
+.end_row h1{
+	color: #FFDB9A;/*black looks good too*/
+	font-size: 90px;
+	font-family: 'Dancing Script', cursive;
+	font-weight: 600;
+	border: 10px dashed #DDBCB0;
+	margin-left: 3%;
+	width: 94%;
+	margin-right: 3%;
+	text-align: center;
+}
+
+.end_row {
+	color: #8E2C48;
+	height: 30px;
+	font-family: 'Times New Roman';
 }
