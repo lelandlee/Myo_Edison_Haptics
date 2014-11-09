@@ -151,9 +151,8 @@ body{
 	margin-right: 3%;
 	text-align: center;
 }
-
-.end_row {
+.end_row h2{
 	color: #8E2C48;
-	height: 30px;
+	height: 60px;
 	font-family: 'Times New Roman';
 }
