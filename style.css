@@ -14,6 +14,9 @@ body{
 	font-family: 'Dancing Script', cursive;
 	font-weight: 600;
 	border: 10px dashed #DDBCB0;
+	margin-left: 3%;
+	width: 94%;
+	margin-right: 3%;
 }
 
 .header h2{
@@ -29,6 +32,10 @@ body{
 
 .data {
 	list-style-type: none;
+}
+
+.data #diff_P, #diff_Y {
+	font-weight: 900;
 }
 
 .result li{
