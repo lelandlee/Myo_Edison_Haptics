@@ -9,3 +9,7 @@ Edison Name + Password = myo_edison
 yaw difference > 100 == hug; >150 == tight hug
 pitch difference -> negative to positive, range < +-100
 
+
+Start making mock ups for the rest of the frames?
+Connect to Microsoft Azure?
+Create own API's?

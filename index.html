@@ -107,7 +107,7 @@
 				init_yaw = yaw*100;
 				document.getElementById("init_P").innerHTML = "init pitch: " + init_pitch;
 				document.getElementById("init_Y").innerHTML = "init yaw: " + init_yaw;
-				document.getElementById('pose').innerHTML = "fist start";
+				document.getElementById('pose').innerHTML = "Initiating Sequence";
 				return;
 			})
 
@@ -164,6 +164,13 @@
 
 			if(yawDiff() > 0 && pitchDiff() > 0){
 				document.getElementById('pose').innerHTML = "none";
+			}
+
+			var responseText = function(){
+				var options = ["Amazing", "Excellent", "Spot On", "Stellar", 
+				"Nearly There", "A Tad Bit More", "I feel better"];
+				var choice = Math.random()*options.length;
+				document.getElementById("response").innerHTML = options[parseInt(choice)];
 			}
 		});
 	</script>
