@@ -18,8 +18,13 @@ body {
 
 .header h2{
 	color: #8E2C48;
-	height: 50px;
+	height: 60px;
 	font-family: 'Times New Roman';
+}
+
+.info_column {
+	height: 300px;
+	text-align: center;
 }
 
 .data {
@@ -28,5 +33,9 @@ body {
 
 .result li{
 	list-style-type: none;
-	font-size: 40px;
+	font-size: 30px;
+}
+
+#unityPlayer {
+	text-align: center;
 }
