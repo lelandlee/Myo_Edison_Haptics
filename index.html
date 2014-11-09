@@ -77,6 +77,8 @@
 					<h2>Your Action:</h2>
 					<li id="pose"></li>
 					<li id="duration"></li>
+
+					<button type="button" class="btn btn" data-dismiss="modal">Send Message</button>
 				</div>
 			</ul>
 		</div>
@@ -85,10 +87,10 @@
 			<h1>Hugs Recieved/to be Opened</h1>
 			<ul class="options_list">
 				<li>Click to Open</li>
-				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="showMessage()">Bill</button>
-				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="showMessage()">Athens</button>
-				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="showMessage()">Gloria</button>
-				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="showMessage()">Ali</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="showMessage(1)">Bill</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="showMessage(2)">Athens</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="showMessage(3)">Gloria</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="showMessage(2)">Ali</button>
 			</ul>
 		</div>
 		<div class="inputFromOther">
@@ -190,8 +192,13 @@
 
 		});
 
-		function showMessage(){
-			document.getElementById("response").innerHTML = "Recieved 3 minute hug";
+		function showMessage(val){
+			if(val == 1)
+				document.getElementById("response").innerHTML = "Recieved 3 minute hug";
+			if(val == 2)
+				document.getElementById("response").innerHTML = "Recieved 2 minute tight hug";
+			if(val == 3)
+				document.getElementById("response").innerHTML = "Recieved 1 minute short rub";
 		}
 	</script>
 </html>
