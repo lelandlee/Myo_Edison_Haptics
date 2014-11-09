@@ -1,5 +1,5 @@
-body {
-	background-color: #FFE3D9
+body{
+	background-color: #FFE3D9;
 }
 
 .header {
@@ -35,7 +35,9 @@ body {
 	list-style-type: none;
 	font-size: 30px;
 }
-
-#unityPlayer {
-	text-align: center;
-}
+/*
+.myCanvas {
+	width: 400px;
+	height: 300px;
+	background-color: black;
+}*/

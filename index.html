@@ -18,13 +18,6 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-		<!--Unity Related Script-->
-		<script type="text/javascript">
-			var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer–3.x/3.0/uo/UnityObject2.js";
-			if (document.location.protocol == 'https:')
-			    unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
-			document.write('<script type="text/javascript" src="' + unityObjectUrl + '"></script>');
-		</script>
 	</head>
 
 	<body>
@@ -65,13 +58,7 @@
 			</ul>
 		</div>
 
-		<div id="unityPlayer">
-	    <div class="missing">
-        <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
-            <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
-        </a>
-	    </div>
-		</div>
+		<canvas id="myCanvas" width="100" height="100"></canvas>
 
 
 	</body>
@@ -164,10 +151,6 @@
 				document.getElementById('pose').innerHTML = "none";
 			}
 		});
-
-		<!--Unity Script-->
-		var u = new UnityObject2();
-		u.initPlugin(jQuery("#unityPlayer")[0], "Example.unity3d");
 	</script>
 </html>
 
