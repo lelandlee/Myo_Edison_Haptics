@@ -10,15 +10,21 @@ yaw difference > 100 == hug; >150 == tight hug
 pitch difference -> negative to positive, range < +-100
 
 
-TODO:
+Start making mock ups for the rest of the frames?
+Connect to Microsoft Azure?
 Create own API's?
+
+
+Server Login Name: AlwaysThere
+Password: Neveralone1
+
+
 Create connection between different clients in database, can virtually hug each other
--just send person email about hug stats via mandrill
--tweet a hug?
--Improve UI website + create info page
+
+-just send person email about hug stats
 
 
-PITCH NOTES:
+pitch prep:
 -globalizing world, people are farther appart but need to maintain relationships
 -short comings of phone + email + sms + skype -> something physical
 -> "Always There"

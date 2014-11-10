@@ -1,3 +1,21 @@
+<!--
+	Developed by Leland Lee
+	2014, Nov. 7-9 @ HackSC
+	https://github.com/lelandlee/Myo_Edison_Haptics
+
+	Myo.js framework is from
+	https://github.com/stolksdorf/myo.js
+
+	Math calculations is from Thalmic Labs's 
+	hello-myo.cpp sample code from myo-sdk-win-beta5
+	converted to javascript by Author (Leland Lee)
+
+	Login HTML and CSS was developed by Yay Shin
+	who I worked with during CalHacks 2014, but modified for this project
+	https://github.com/yayshine/yourMood
+	(uses Myo Armband to detect body language)	
+-->
+
 <!doctype html>
 <html lang="eng">
 	<head>
@@ -5,16 +23,16 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>yourMood</title>
+		<title>Myo_Edison_Haptics</title>
 
 		<!-- css -->
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="css/style.css">
 		<link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
 
 		<!-- Javascript -->
-		<script type="text/javascript" src="Myo.js"></script>
-		<script src='myo.experimental.js'></script>
+		<script type="text/javascript" src="js/Myo.js"></script>
+		<script src='js/myo.experimental.js'></script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	</head>
@@ -25,6 +43,7 @@
 			<h2 class="col-lg-12">~ You are Never Alone</h2>
 		</div>
 
+		<!--login page structure and CSS is from Yay Shin's yourMood -->
 		<div class="container login_page" id="l_page">
 			<form>
 				<input type="text" placeholder="Unique Identity" id="name"><br />
@@ -44,10 +63,6 @@
 				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="showMessage()">Athens</button>
 				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="showMessage()">Gloria</button>
 				<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="showMessage()">Ali</button>
-				<!--<li><a href="#">Bill</a></li>
-				<li><a href="#">Athens</a></li>
-				<li><a href="#">Gloria</a></li>
-				<li><a href="#">Ali</a></li>-->
 			</ul>
 		</div>
 
@@ -140,7 +155,7 @@
 			document.getElementById("yaw").innerHTML = "yaw: " + yaw;
 
 
-
+			//This is the math from Thalmic Labs, converted into Javascript
 			var roll = Math.atan2(2.0 * (data.w * data.x + data.y * data.z),
                            1.0 - 2.0 * (data.x * data.x + data.y * data.y));
       var pitch = Math.asin(2.0 * (data.w * data.y - data.z * data.x));
